@@ -19,4 +19,4 @@
 // });
 
 
-export * from './getAllReactReleases';
+export * from './getReactReleases';
