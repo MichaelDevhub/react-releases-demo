@@ -19,7 +19,7 @@ const FETCH_REACT_RELEASES_URL: string = "https://api.github.com/repos/facebook/
 const MAX_RELEASES: number = 15;
 
 const mapReleaseData = (releases: IReleaseData[]): IReleaseData[] => {
-    return releases.map(({ tag_name, name }) => ({ tag_name, name }));
+    return releases.map(({ tag_name, name, html_url }) => ({ tag_name, name, html_url }));
 }
 
 const filterReleaseData = (releases: IReleaseData[], searchKey: string): IReleaseData[] => releases.filter((release: IReleaseData) =>
