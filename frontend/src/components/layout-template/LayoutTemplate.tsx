@@ -15,7 +15,8 @@ const LayoutTemplate = ({children}: ILayoutTemplateProps) => {
             <Container sx={{
                 display: 'flex',
                 justifyContent: 'center',
-                backgroundColor: theme.palette.primary.contrastText
+                backgroundColor: theme.palette.primary.contrastText,
+                paddingTop: theme.spacing(2),
             }}>
                 {children}
             </Container>

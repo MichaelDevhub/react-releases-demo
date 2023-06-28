@@ -4,7 +4,7 @@ import {ThemeProvider} from "@mui/material";
 import theme from "./theme";
 import {Provider} from "react-redux";
 import store from "./store";
-import HomePage from "./pages/home/home";
+import HomePage from "./pages/home/HomePage";
 
 function App() {
     return (
