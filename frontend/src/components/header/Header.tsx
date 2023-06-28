@@ -3,7 +3,7 @@ import {AppBar, Container, InputBase, Toolbar, Typography, useTheme} from '@mui/
 import {Search} from "@mui/icons-material";
 import {debounce} from "lodash";
 import {AppDispatch, useAppDispatch} from "../../store";
-import {fetchReleaseData} from "../../reducers/release-data/releaseDataRequests";
+import {fetchReleaseData, searchReleaseData} from "../../reducers/release-data/releaseDataRequests";
 
 const Header: React.FC = () => {
     const theme = useTheme();
@@ -17,7 +17,11 @@ const Header: React.FC = () => {
 
     const requestHandler = (value: string) => {
         console.log('Dispatch search request', value)
-        dispatch(fetchReleaseData());
+        if (value && value.length > 0) {
+            dispatch(searchReleaseData(value));
+        } else {
+            dispatch(fetchReleaseData());
+        }
     }
 
     const debouncedChangeHandler = useCallback(

@@ -7,6 +7,7 @@ import {AppDispatch, RootState, useAppDispatch, useAppSelector} from "../../stor
 import {fetchReleaseData} from "../../reducers/release-data/releaseDataRequests";
 import {STATUS} from "../../types/status.types";
 import ErrorComponent from "../../components/error-component/ErrorComponent";
+import ReleaseCardContainer from "../../components/release-card-container/ReleaseCardContainer";
 
 
 interface IHeaderContentProps {
@@ -18,7 +19,7 @@ const HomeContent = ({state}: IHeaderContentProps) => {
         case STATUS.LOADING:
             return <Lottie animationData={loadingAnimation} style={{width: '20rem'}}/>
         case STATUS.SUCCESS:
-            return <div>{state.data?.length} Items found</div>;
+            return <ReleaseCardContainer releaseData={state.data} />;
         case STATUS.FAILED:
             return state.error ? <ErrorComponent error={state.error} /> : null;
     }

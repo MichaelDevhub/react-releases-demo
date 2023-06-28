@@ -3,8 +3,10 @@ import * as express from 'express';
 import * as admin from 'firebase-admin';
 import axios from "axios";
 import {IReleaseData} from "./types";
+import * as cors from 'cors';
 
 const app = express();
+app.use(cors());
 admin.initializeApp();
 
 // Set up the Firestore emulator

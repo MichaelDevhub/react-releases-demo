@@ -4,8 +4,11 @@ import {CustomError} from "../../types/error.types";
 import {isCustomError} from "../../utils/error-checks";
 import axios from "axios";
 
-const FETCH_RELEASE_DATA_URL = "http://127.0.0.1:5001/react-releases-demo/us-central1/getReactReleases/all";
-const SEARCH_RELEASE_DATA_URL = "http://127.0.0.1:5001/react-releases-demo/us-central1/getReactReleases/search";
+axios.defaults.baseURL = 'http://localhost:5001'; // Replace with your Firebase Emulator host and port
+axios.defaults.timeout = 5001;
+
+const FETCH_RELEASE_DATA_URL = "/react-releases-demo/us-central1/getReactReleases/all";
+const SEARCH_RELEASE_DATA_URL = "/react-releases-demo/us-central1/getReactReleases/search";
 
 export const fetchReleaseData = createAsyncThunk<IReleaseData[], void, { rejectValue: CustomError }>('data/fetchData', async (_, {rejectWithValue}) => {
     try {
