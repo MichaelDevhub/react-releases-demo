@@ -39,7 +39,6 @@ const mapReleaseData = (releases: IReleaseData[]): IReleaseData[] => {
 };
 
 const filterReleaseData = (releases: IReleaseData[], searchKey: string): IReleaseData[] => releases.filter((release: IReleaseData) =>
-    release.name.toLowerCase().includes(searchKey.toLowerCase()) ||
     release.tag_name.toLowerCase().includes(searchKey.toLowerCase())
 );
 

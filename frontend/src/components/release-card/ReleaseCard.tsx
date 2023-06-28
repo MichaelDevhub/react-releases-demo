@@ -18,7 +18,9 @@ const ReleaseCard = ({ releaseData }: IReleaseCardProps) => {
     };
 
     return (
-        <Card onClick={handleClick}>
+        <Card onClick={handleClick} sx={{
+            cursor: 'pointer',
+        }}>
             <CardHeader title={name} />
             <CardContent>
                 {reactions ? (

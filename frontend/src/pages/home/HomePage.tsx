@@ -9,7 +9,6 @@ import {STATUS} from "../../types/status.types";
 import ErrorComponent from "../../components/error-component/ErrorComponent";
 import ReleaseCardContainer from "../../components/release-card-container/ReleaseCardContainer";
 
-
 interface IHeaderContentProps {
     state: IDataState;
 }
