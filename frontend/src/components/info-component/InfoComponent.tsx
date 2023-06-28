@@ -13,11 +13,10 @@ const InfoComponent = ({info}: IInfoComponent) => {
                 color={"info"}
                 sx={{
                     display: 'flex',
-                    flex: 1,
                     justifyContent: 'center',
-                    backgroundColor: theme.palette.info.light,
                     color: theme.palette.info.main,
-                    borderRadius: theme.shape.borderRadius
+                    borderRadius: theme.shape.borderRadius,
+                    border: `2px solid ${theme.palette.info.light}`,
                 }}
             >
                 <Typography variant="h6">

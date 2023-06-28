@@ -30,12 +30,8 @@ const Header: React.FC = () => {
         , []);
 
     return (
-        <AppBar position="sticky" sx={{
-            flexGrow: 1,
-        }}>
-            <Container sx={{
-                padding: 0,
-            }}>
+        <AppBar position="sticky">
+            <Container>
                 <Toolbar sx={{
                     display: 'flex',
                     flexDirection: 'row',
@@ -43,8 +39,7 @@ const Header: React.FC = () => {
                     padding: theme.spacing(1, 0, 1, 0),
                     minHeight: 'auto',
                     [theme.breakpoints.up('sm')]: {
-                        paddingBottom: 0,
-                        paddingTop: 0,
+                        padding: theme.spacing(0, 0, 0, 0),
                     },
                 }}>
                     <ThemeSwitchButton/>
@@ -78,7 +73,6 @@ const Header: React.FC = () => {
                         />
                     </Container>
                 </Toolbar>
-
             </Container>
         </AppBar>
     );

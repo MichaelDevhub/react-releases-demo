@@ -1,5 +1,5 @@
 import React from 'react';
-import {Container, useTheme} from '@mui/material';
+import {Box, useTheme} from '@mui/material';
 import {IReleaseData} from "../../types/data.types";
 import ReleaseCard from "../release-card/ReleaseCard";
 import InfoComponent from "../info-component/InfoComponent";
@@ -13,7 +13,7 @@ const ReleaseCardContainer = ({releaseData}: IReleaseCardContainerProps) => {
 
     if (releaseData && releaseData.length > 0) {
         return (
-            <Container
+            <Box
                 sx={{
                     display: 'flex',
                     flexDirection: 'column',
@@ -25,7 +25,7 @@ const ReleaseCardContainer = ({releaseData}: IReleaseCardContainerProps) => {
                         <ReleaseCard key={`${index}-release-card`} releaseData={item}/>
                     )
                 }
-            </Container>
+            </Box>
         );
     } else {
         return <InfoComponent info={"No React Releases found."}/>

@@ -14,11 +14,10 @@ const ErrorComponent = ({error}: IErrorComponent) => {
                 color={'error'}
                 sx={{
                     display: 'flex',
-                    flex: 1,
                     justifyContent: 'center',
-                    backgroundColor: theme.palette.error.light,
                     color: theme.palette.error.main,
-                    borderRadius: theme.shape.borderRadius
+                    borderRadius: theme.shape.borderRadius,
+                    border: `2px solid ${theme.palette.error.light}`,
                 }}
             >
                 <Typography variant="h6" color="error">

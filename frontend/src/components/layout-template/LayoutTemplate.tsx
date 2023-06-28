@@ -16,22 +16,27 @@ const LayoutTemplate = ({children}: ILayoutTemplateProps) => {
 
     useEffect(() => {
         theme = getTheme(themeMode);
+        document.body.style.backgroundColor = theme.palette.mode === 'dark' ? theme.palette.primary.main : theme.palette.common.white;
     }, [themeMode]);
 
 
     return (
         <ThemeProvider theme={theme}>
             <Header/>
-            <Container maxWidth={false}
-                sx={{
-                    alignSelf: 'center',
-                    flexGrow: 1,
-                    margin: 0,
-                    justifyContent: 'center',
-                    paddingTop: theme.spacing(2),
-                    backgroundColor: theme.palette.background.default,
-                }}>
-                {children}
+            <Container maxWidth={false}>
+                <Container
+                    sx={{
+                        width: '100%',
+                        alignSelf: 'center',
+                        justifyContent: 'center',
+                        alignItems: 'center',
+                        padding: theme.spacing(2, 0, 0, 0),
+                        [theme.breakpoints.up('sm')]: {
+                            padding: theme.spacing(2, 0, 0, 0),
+                        },
+                    }}>
+                    {children}
+                </Container>
             </Container>
         </ThemeProvider>
     );
