@@ -1,5 +1,5 @@
 import React, {useCallback, useState} from 'react';
-import {AppBar, Container, InputBase, Toolbar, Typography, useTheme} from '@mui/material';
+import {AppBar, Container, InputBase, Toolbar, useTheme} from '@mui/material';
 import {Search} from "@mui/icons-material";
 import {debounce} from "lodash";
 import {AppDispatch, useAppDispatch} from "../../store";
@@ -30,63 +30,56 @@ const Header: React.FC = () => {
         , []);
 
     return (
-        <AppBar position="static" sx={{
+        <AppBar position="sticky" sx={{
             flexGrow: 1,
         }}>
-            <Toolbar sx={{
-                display: 'flex',
-                flexDirection: 'column',
-                paddingBottom: theme.spacing(1),
-                paddingTop: theme.spacing(1),
-                minHeight: 'auto',
-
-                [theme.breakpoints.up('sm')]: {
-                    paddingBottom: 0,
-                    paddingTop: 0,
-                    flexDirection: 'row',
-                },
+            <Container sx={{
+                padding: 0,
             }}>
-                <Typography variant="h6" sx={{
-                    display: 'none',
-                    flexGrow: 1,
-                    flexShrink: 0,
-                    [theme.breakpoints.up('sm')]: {
-                        display: 'flex',
-                    },
-                }}>
-                    react-releases-demo
-                </Typography>
-                <ThemeSwitchButton/>
-                <Container sx={{
+                <Toolbar sx={{
                     display: 'flex',
                     flexDirection: 'row',
-                    alignItems: 'center',
-                    borderRadius: theme.shape.borderRadius,
-                    backgroundColor: theme.palette.common.white,
-                    width: '100%',
-                    transition: theme.transitions.create('width'),
+                    justifyContent: 'space-between',
+                    padding: theme.spacing(1, 0, 1, 0),
+                    minHeight: 'auto',
                     [theme.breakpoints.up('sm')]: {
-                        marginLeft: theme.spacing(2),
-                    },
-                    [theme.breakpoints.up('md')]: {
-                        width: '40ch',
+                        paddingBottom: 0,
+                        paddingTop: 0,
                     },
                 }}>
-                    <Search sx={{
-                        color: theme.palette.primary.main,
-                    }}/>
-                    <InputBase
-                        placeholder="Search…"
-                        sx={{
-                            flex: 1,
+                    <ThemeSwitchButton/>
+                    <Container sx={{
+                        display: 'flex',
+                        flexDirection: 'row',
+                        alignItems: 'center',
+                        justifyContent: 'flex-end',
+                        borderRadius: theme.shape.borderRadius,
+                        backgroundColor: theme.palette.common.white,
+                        width: '100%',
+                        marginLeft: theme.spacing(2),
+                        transition: theme.transitions.create('width'),
+                        marginRight: 0,
+                        [theme.breakpoints.up('md')]: {
+                            width: '40ch',
+                        },
+                    }}>
+                        <Search sx={{
                             color: theme.palette.primary.main,
-                            padding: theme.spacing(1, 1, 1, 1),
-                        }}
-                        value={searchValue}
-                        onChange={(event: React.ChangeEvent<HTMLInputElement>) => handleSearchChange(event)}
-                    />
-                </Container>
-            </Toolbar>
+                        }}/>
+                        <InputBase
+                            placeholder="Search…"
+                            sx={{
+                                flex: 1,
+                                color: theme.palette.primary.main,
+                                padding: theme.spacing(1, 1, 1, 1),
+                            }}
+                            value={searchValue}
+                            onChange={(event: React.ChangeEvent<HTMLInputElement>) => handleSearchChange(event)}
+                        />
+                    </Container>
+                </Toolbar>
+
+            </Container>
         </AppBar>
     );
 };

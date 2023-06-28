@@ -8,10 +8,10 @@ export const getTheme = (theme: ThemeMode) => {
         palette: {
             mode: isDarkMode ? 'dark' : 'light',
             primary: {
-                main: '#B026FF',
+                main: '#2c2c2c',
             },
             secondary: {
-                main: '#FF0000',
+                main: '#ececec',
             },
             // error: {
             //     light: '#FCF5F4',

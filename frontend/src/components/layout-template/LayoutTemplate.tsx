@@ -9,6 +9,7 @@ interface ILayoutTemplateProps {
     children: ReactNode | ReactNode[];
 
 }
+
 const LayoutTemplate = ({children}: ILayoutTemplateProps) => {
     const themeMode: ThemeMode = useAppSelector((state) => state.theme.mode);
     let theme = getTheme(themeMode);
@@ -21,12 +22,15 @@ const LayoutTemplate = ({children}: ILayoutTemplateProps) => {
     return (
         <ThemeProvider theme={theme}>
             <Header/>
-            <Container sx={{
-                display: 'flex',
-                justifyContent: 'center',
-                paddingTop: theme.spacing(2),
-                backgroundColor: theme.palette.background.default,
-            }}>
+            <Container maxWidth={false}
+                sx={{
+                    alignSelf: 'center',
+                    flexGrow: 1,
+                    margin: 0,
+                    justifyContent: 'center',
+                    paddingTop: theme.spacing(2),
+                    backgroundColor: theme.palette.background.default,
+                }}>
                 {children}
             </Container>
         </ThemeProvider>
