@@ -15,6 +15,7 @@ const ReactionContainer= ({ reactions }: IReactionContainerProps) => {
             display: 'flex',
             flexDirection: 'row',
             gap: theme.spacing(2),
+            flexWrap: 'wrap',
         }}>
             {Object.entries(reactions).map(([reactionType, count]) => (
                 <ReactionComponent key={reactionType} reaction={reactionType} amount={count}/>
