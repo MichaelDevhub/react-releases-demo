@@ -1,7 +1,7 @@
 import React from 'react';
 import {Card, CardContent, CardHeader, Typography} from '@mui/material';
 import {IReleaseData} from "../../types/data.types";
-import {reactionEmojis} from "../../types/reaction.types";
+import ReactionContainer from "../reaction-container/ReactionContainer";
 
 interface IReleaseCardProps {
     releaseData: IReleaseData;
@@ -22,15 +22,7 @@ const ReleaseCard = ({ releaseData }: IReleaseCardProps) => {
             <CardHeader title={name} />
             <CardContent>
                 {reactions ? (
-                    <>
-                        <Typography variant="body2" color="textSecondary">
-                            {Object.entries(reactions).map(([reactionType, count]) => (
-                                <React.Fragment key={reactionType}>
-                                    {reactionEmojis[reactionType]} {count}{' '}
-                                </React.Fragment>
-                            ))}
-                        </Typography>
-                    </>
+                    <ReactionContainer reactions={reactions}/>
                 ) : (
                     <Typography variant="body2" color="textSecondary">
                         No reactions available.
