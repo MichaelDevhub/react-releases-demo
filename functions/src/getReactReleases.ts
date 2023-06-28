@@ -21,8 +21,22 @@ const FETCH_REACT_RELEASES_URL: string = "https://api.github.com/repos/facebook/
 const MAX_RELEASES: number = 15;
 
 const mapReleaseData = (releases: IReleaseData[]): IReleaseData[] => {
-    return releases.map(({ tag_name, name, html_url }) => ({ tag_name, name, html_url }));
-}
+    return releases.map(({ tag_name, name, html_url, reactions = {} }) => ({
+        tag_name,
+        name,
+        html_url,
+        reactions: {
+            "+1": reactions["+1"] || 0,
+            "-1": reactions["-1"] || 0,
+            confused: reactions.confused || 0,
+            eyes: reactions.eyes || 0,
+            heart: reactions.heart || 0,
+            hooray: reactions.hooray || 0,
+            laugh: reactions.laugh || 0,
+            rocket: reactions.rocket || 0,
+        },
+    }));
+};
 
 const filterReleaseData = (releases: IReleaseData[], searchKey: string): IReleaseData[] => releases.filter((release: IReleaseData) =>
     release.name.toLowerCase().includes(searchKey.toLowerCase()) ||
@@ -35,7 +49,7 @@ app.get('/all', async (req, res) => {
         res.json(mapReleaseData(response.data.slice(0, MAX_RELEASES)));
     } catch (error) {
         console.error(error);
-        res.status(500).json({ error: 'An error occurred' });
+        res.status(500).json({error: 'An error occurred'});
     }
 });
 
@@ -48,12 +62,12 @@ app.get('/search', async (req, res) => {
             const response = await axios.get<IReleaseData[]>(FETCH_REACT_RELEASES_URL);
             res.json(mapReleaseData(filterReleaseData(response.data, searchKey)));
         } else {
-            res.status(500).json({ error: 'Property key is missing for search!' });
+            res.status(500).json({error: 'Property key is missing for search!'});
         }
 
     } catch (error) {
         console.error(error);
-        res.status(500).json({ error: 'An error occurred' });
+        res.status(500).json({error: 'An error occurred'});
     }
 });
 

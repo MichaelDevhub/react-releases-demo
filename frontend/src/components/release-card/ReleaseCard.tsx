@@ -1,29 +1,41 @@
 import React from 'react';
-import { Card, CardContent, CardHeader } from '@mui/material';
+import {Card, CardContent, CardHeader, Typography} from '@mui/material';
 import {IReleaseData} from "../../types/data.types";
+import {reactionEmojis} from "../../types/reaction.types";
 
-interface ReleaseCardProps {
+interface IReleaseCardProps {
     releaseData: IReleaseData;
 }
-
-const ReleaseCard = ({ releaseData }: ReleaseCardProps) => {
-    const { name, html_url } = releaseData;
+const ReleaseCard = ({ releaseData }: IReleaseCardProps) => {
+    const {
+        name,
+        html_url,
+        reactions,
+    } = releaseData;
 
     const handleClick = () => {
         window.location.href = html_url;
-    };
-
-    // Generate random text for the card body
-    const getRandomText = () => {
-        // Replace this with your own logic to generate random text
-        return 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.';
     };
 
     return (
         <Card onClick={handleClick}>
             <CardHeader title={name} />
             <CardContent>
-                <p>{getRandomText()}</p>
+                {reactions ? (
+                    <>
+                        <Typography variant="body2" color="textSecondary">
+                            {Object.entries(reactions).map(([reactionType, count]) => (
+                                <React.Fragment key={reactionType}>
+                                    {reactionEmojis[reactionType]} {count}{' '}
+                                </React.Fragment>
+                            ))}
+                        </Typography>
+                    </>
+                ) : (
+                    <Typography variant="body2" color="textSecondary">
+                        No reactions available.
+                    </Typography>
+                )}
             </CardContent>
         </Card>
     );
