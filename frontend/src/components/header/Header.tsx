@@ -4,6 +4,7 @@ import {Search} from "@mui/icons-material";
 import {debounce} from "lodash";
 import {AppDispatch, useAppDispatch} from "../../store";
 import {fetchReleaseData, searchReleaseData} from "../../reducers/release-data/releaseDataRequests";
+import ThemeSwitchButton from "../theme-switch-button/ThemeSwitchButton";
 
 const Header: React.FC = () => {
     const theme = useTheme();
@@ -30,7 +31,6 @@ const Header: React.FC = () => {
 
     return (
         <AppBar position="static" sx={{
-            backgroundColor: 'light-grey',
             flexGrow: 1,
         }}>
             <Toolbar sx={{
@@ -56,6 +56,7 @@ const Header: React.FC = () => {
                 }}>
                     react-releases-demo
                 </Typography>
+                <ThemeSwitchButton/>
                 <Container sx={{
                     display: 'flex',
                     flexDirection: 'row',

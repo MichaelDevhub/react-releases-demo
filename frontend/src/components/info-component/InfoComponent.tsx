@@ -10,6 +10,7 @@ const InfoComponent = ({info}: IInfoComponent) => {
     return (
             <Box
                 p={1}
+                color={"info"}
                 sx={{
                     display: 'flex',
                     flex: 1,

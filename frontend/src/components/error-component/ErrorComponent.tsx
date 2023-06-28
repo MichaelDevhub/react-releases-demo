@@ -11,6 +11,7 @@ const ErrorComponent = ({error}: IErrorComponent) => {
     return (
             <Box
                 p={1}
+                color={'error'}
                 sx={{
                     display: 'flex',
                     flex: 1,

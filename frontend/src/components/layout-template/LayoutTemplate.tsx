@@ -1,26 +1,35 @@
-import React, {ReactNode} from 'react';
+import React, {ReactNode, useEffect} from 'react';
 import Header from "../header/Header";
-import {Container, useTheme} from "@mui/material";
+import {Container, ThemeProvider} from "@mui/material";
+import {getTheme} from "../../theme";
+import {ThemeMode} from "../../types/theme.types";
+import {useAppSelector} from "../../store";
 
 interface ILayoutTemplateProps {
     children: ReactNode | ReactNode[];
 
 }
 const LayoutTemplate = ({children}: ILayoutTemplateProps) => {
-    const theme = useTheme();
+    const themeMode: ThemeMode = useAppSelector((state) => state.theme.mode);
+    let theme = getTheme(themeMode);
+
+    useEffect(() => {
+        theme = getTheme(themeMode);
+    }, [themeMode]);
+
 
     return (
-        <div>
+        <ThemeProvider theme={theme}>
             <Header/>
             <Container sx={{
                 display: 'flex',
                 justifyContent: 'center',
-                backgroundColor: theme.palette.primary.contrastText,
                 paddingTop: theme.spacing(2),
+                backgroundColor: theme.palette.background.default,
             }}>
                 {children}
             </Container>
-        </div>
+        </ThemeProvider>
     );
 }
 
