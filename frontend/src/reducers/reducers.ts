@@ -1,9 +1,8 @@
 // reducers.ts
-import { combineReducers } from 'redux';
 import dataReducer from './release-data/releaseDataSlice';
 
-const rootReducer = combineReducers({
+const rootReducer = {
     data: dataReducer,
-});
+};
 
 export default rootReducer;

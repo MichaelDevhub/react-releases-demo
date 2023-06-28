@@ -7,15 +7,15 @@ import {Provider} from "react-redux";
 import store from "./store";
 
 function App() {
-  return (
-      <Provider store={store}>
-          <ThemeProvider theme={theme}>
-              <LayoutTemplate >
-                  <div>some content</div>
-              </LayoutTemplate>
-          </ThemeProvider>
-      </Provider>
-  );
+    return (
+        <ThemeProvider theme={theme}>
+            <Provider store={store}>
+                <LayoutTemplate>
+                    <div>some content</div>
+                </LayoutTemplate>
+            </Provider>
+        </ThemeProvider>
+    );
 }
 
 export default App;

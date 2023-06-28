@@ -1,14 +1,28 @@
-import React, { useState } from 'react';
-import {AppBar, Toolbar, Typography, InputBase, useTheme, Container} from '@mui/material';
+import React, {useCallback, useState} from 'react';
+import {AppBar, Container, InputBase, Toolbar, Typography, useTheme} from '@mui/material';
 import {Search} from "@mui/icons-material";
+import {debounce} from "lodash";
+import {AppDispatch, useAppDispatch} from "../../store";
+import {fetchReleaseData} from "../../reducers/release-data/releaseDataRequests";
 
 const Header: React.FC = () => {
     const theme = useTheme();
-    const [searchValue, setSearchValue] = useState('');
+    const dispatch = useAppDispatch() as AppDispatch;
+    const [searchValue, setSearchValue] = useState<string>('');
 
     const handleSearchChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-        setSearchValue(event.target.value);
+        setSearchValue(() => event.target.value);
+        debouncedChangeHandler(event.target.value);
     };
+
+    const requestHandler = (value: string) => {
+        console.log('Dispatch search request', value)
+        dispatch(fetchReleaseData());
+    }
+
+    const debouncedChangeHandler = useCallback(
+        debounce(requestHandler, 500)
+        , []);
 
     return (
         <AppBar position="static" sx={{
@@ -48,7 +62,7 @@ const Header: React.FC = () => {
                             padding: theme.spacing(1, 1, 1, 1),
                         }}
                         value={searchValue}
-                        onChange={handleSearchChange}
+                        onChange={(event: React.ChangeEvent<HTMLInputElement>) => handleSearchChange(event)}
                     />
                 </Container>
             </Toolbar>
