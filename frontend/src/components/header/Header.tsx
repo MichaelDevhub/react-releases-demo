@@ -29,10 +29,26 @@ const Header: React.FC = () => {
             backgroundColor: 'light-grey',
             flexGrow: 1,
         }}>
-            <Toolbar>
+            <Toolbar sx={{
+                display: 'flex',
+                flexDirection: 'column',
+                paddingBottom: theme.spacing(1),
+                paddingTop: theme.spacing(1),
+                minHeight: 'auto',
+
+                [theme.breakpoints.up('sm')]: {
+                    paddingBottom: 0,
+                    paddingTop: 0,
+                    flexDirection: 'row',
+                },
+            }}>
                 <Typography variant="h6" sx={{
+                    display: 'none',
                     flexGrow: 1,
                     flexShrink: 0,
+                    [theme.breakpoints.up('sm')]: {
+                        display: 'flex',
+                    },
                 }}>
                     react-releases-demo
                 </Typography>
@@ -42,18 +58,18 @@ const Header: React.FC = () => {
                     alignItems: 'center',
                     borderRadius: theme.shape.borderRadius,
                     backgroundColor: theme.palette.common.white,
-                    marginRight: theme.spacing(2),
-                    marginLeft: theme.spacing(2),
                     width: '100%',
                     transition: theme.transitions.create('width'),
+                    [theme.breakpoints.up('sm')]: {
+                        marginLeft: theme.spacing(2),
+                    },
                     [theme.breakpoints.up('md')]: {
                         width: '40ch',
-                        marginLeft: theme.spacing(3),
                     },
                 }}>
-                        <Search sx={{
-                            color: theme.palette.primary.main,
-                        }}/>
+                    <Search sx={{
+                        color: theme.palette.primary.main,
+                    }}/>
                     <InputBase
                         placeholder="Search…"
                         sx={{
