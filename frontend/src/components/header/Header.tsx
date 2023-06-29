@@ -6,7 +6,7 @@ import {AppDispatch, useAppDispatch} from "../../store";
 import {fetchReleaseData, searchReleaseData} from "../../reducers/release-data/releaseDataRequests";
 import ThemeSwitchButton from "../theme-switch-button/ThemeSwitchButton";
 
-const Header: React.FC = () => {
+const Header = () => {
     const theme = useTheme();
     const dispatch = useAppDispatch() as AppDispatch;
     const [searchValue, setSearchValue] = useState<string>('');
@@ -17,7 +17,6 @@ const Header: React.FC = () => {
     };
 
     const requestHandler = (value: string) => {
-        console.log('Dispatch search request', value)
         if (value && value.length > 0) {
             dispatch(searchReleaseData(value));
         } else {

@@ -31,7 +31,6 @@ const HomePage = () => {
 
     useEffect(() => {
         if (STATUS.IDLE === dataState.status) {
-            console.log("fetch data");
             dispatch(fetchReleaseData());
         }
     }, []);
