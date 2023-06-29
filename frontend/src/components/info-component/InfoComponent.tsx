@@ -1,11 +1,11 @@
 import React from 'react';
 import {Box, Typography, useTheme} from '@mui/material';
 
-export interface IInfoComponent {
+export interface IInfoComponentProps {
     info: string;
 }
 
-const InfoComponent = ({info}: IInfoComponent) => {
+const InfoComponent = ({info}: IInfoComponentProps) => {
     const theme = useTheme();
     return (
             <Box

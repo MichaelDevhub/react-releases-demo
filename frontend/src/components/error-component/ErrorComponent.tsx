@@ -3,11 +3,11 @@ import {Box, Typography, useTheme} from '@mui/material';
 import {CustomError} from "../../types/error.types";
 import {ErrorOutlineSharp} from "@mui/icons-material";
 
-export interface IErrorComponent {
+export interface IErrorComponentProps {
     error: CustomError;
 }
 
-const ErrorComponent = ({error}: IErrorComponent) => {
+const ErrorComponent = ({error}: IErrorComponentProps) => {
     const theme = useTheme();
     return (
             <Box

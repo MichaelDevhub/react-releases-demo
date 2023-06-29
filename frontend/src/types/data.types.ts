@@ -14,7 +14,3 @@ export interface IDataState {
     error: CustomError | null;
     data: IReleaseData[];
 }
-
-export interface FetchReleaseDataRejectedAction {
-    error: string;
-}
