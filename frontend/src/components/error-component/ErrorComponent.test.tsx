@@ -1,5 +1,6 @@
 import React from 'react';
-import { render, screen } from '@testing-library/react';
+import '@testing-library/jest-dom/extend-expect';
+import { render } from '@testing-library/react';
 import ErrorComponent from './ErrorComponent';
 
 describe('ErrorComponent', () => {
@@ -7,8 +8,8 @@ describe('ErrorComponent', () => {
         const error = {
             message: 'Something went wrong',
         };
-        render(<ErrorComponent error={error} />);
-        const errorMessageText = screen.getByTestId('error-message-text');
+        const { getByTestId } = render(<ErrorComponent error={error} />);
+        const errorMessageText = getByTestId('error-message-text');
         expect(errorMessageText).toBeInTheDocument();
         expect(errorMessageText).toHaveTextContent('Something went wrong');
     });
@@ -17,8 +18,8 @@ describe('ErrorComponent', () => {
         const error = {
             message: 'Something went wrong',
         };
-        render(<ErrorComponent error={error} />);
-        const errorMessageIcon = screen.getByTestId('error-message-icon');
+        const { getByTestId } = render(<ErrorComponent error={error} />);
+        const errorMessageIcon = getByTestId('error-message-icon');
         expect(errorMessageIcon).toBeInTheDocument();
     });
 
@@ -26,8 +27,8 @@ describe('ErrorComponent', () => {
         const error = {
             message: 'Something went wrong',
         };
-        render(<ErrorComponent error={error} />);
-        const errorMessageContainer = screen.getByTestId('error-message-container');
+        const { getByTestId } = render(<ErrorComponent error={error} />);
+        const errorMessageContainer = getByTestId('error-message-container');
         expect(errorMessageContainer).toBeInTheDocument();
     });
 });

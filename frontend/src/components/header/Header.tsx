@@ -29,7 +29,7 @@ const Header = () => {
         , []);
 
     return (
-        <AppBar position="sticky">
+        <AppBar position="sticky" data-testid="header-app-bar">
             <Container>
                 <Toolbar sx={{
                     display: 'flex',
@@ -41,25 +41,29 @@ const Header = () => {
                         padding: theme.spacing(0, 0, 0, 0),
                     },
                 }}>
-                    <ThemeSwitchButton/>
-                    <Container sx={{
-                        display: 'flex',
-                        flexDirection: 'row',
-                        alignItems: 'center',
-                        justifyContent: 'flex-end',
-                        borderRadius: theme.shape.borderRadius,
-                        backgroundColor: theme.palette.common.white,
-                        width: '100%',
-                        marginLeft: theme.spacing(2),
-                        transition: theme.transitions.create('width'),
-                        marginRight: 0,
-                        [theme.breakpoints.up('md')]: {
-                            width: '40ch',
-                        },
-                    }}>
-                        <Search sx={{
-                            color: theme.palette.primary.main,
-                        }}/>
+                    <ThemeSwitchButton data-testid="header-theme-switch-button"/>
+                    <Container
+                        data-testid="header-search-bar"
+                        sx={{
+                            display: 'flex',
+                            flexDirection: 'row',
+                            alignItems: 'center',
+                            justifyContent: 'flex-end',
+                            borderRadius: theme.shape.borderRadius,
+                            backgroundColor: theme.palette.common.white,
+                            width: '100%',
+                            marginLeft: theme.spacing(2),
+                            transition: theme.transitions.create('width'),
+                            marginRight: 0,
+                            [theme.breakpoints.up('md')]: {
+                                width: '40ch',
+                            },
+                        }}>
+                        <Search
+                            data-testid="header-search-icon"
+                            sx={{
+                                color: theme.palette.primary.main,
+                            }}/>
                         <InputBase
                             placeholder="Search…"
                             sx={{
