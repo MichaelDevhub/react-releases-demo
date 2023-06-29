@@ -14,6 +14,7 @@ const ReleaseCardContainer = ({releaseData}: IReleaseCardContainerProps) => {
     if (releaseData && releaseData.length > 0) {
         return (
             <Box
+                data-testid="release-card-container"
                 sx={{
                     display: 'flex',
                     flexDirection: 'column',

@@ -8,7 +8,7 @@ import ThemeSwitchButton from "../theme-switch-button/ThemeSwitchButton";
 
 const Header = () => {
     const theme = useTheme();
-    const dispatch = useAppDispatch() as AppDispatch;
+    const dispatch: AppDispatch = useAppDispatch();
     const [searchValue, setSearchValue] = useState<string>('');
 
     const handleSearchChange = (event: React.ChangeEvent<HTMLInputElement>) => {

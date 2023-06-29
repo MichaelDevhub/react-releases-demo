@@ -1,21 +1,19 @@
 import React from 'react';
-import {Box} from "@mui/material";
-import Lottie from "lottie-react";
-import loadingAnimation from "../../animations/loading.json";
-import loadingAnimationWhite from "../../animations/loading_white.json";
-import {ThemeMode} from "../../types/theme.types";
-import {useAppSelector} from "../../store";
+import {Box, CircularProgress, useTheme} from "@mui/material";
+import {isDark} from "../../utils/theme-utils";
 
 const LoadingContainer = () => {
-    const theme: ThemeMode = useAppSelector((state) => state.theme.mode);
+    const theme = useTheme();
 
     return <Box
+        data-testid="loading-container"
         p={1}
         sx={{
+            paddingTop: theme.spacing(6),
             display: 'flex',
             justifyContent: 'center',
         }}>
-        <Lottie animationData={theme === 'light' ? loadingAnimation : loadingAnimationWhite} style={{width: '20rem', justifySelf: 'center'}}/>
+        <CircularProgress size={'5rem'} sx={{ color: isDark(theme)? theme.palette.common.white : theme.palette.primary.main}} />
     </Box>;
 }
 
