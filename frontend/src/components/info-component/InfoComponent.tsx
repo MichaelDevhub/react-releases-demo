@@ -10,13 +10,10 @@ const InfoComponent = ({info}: IInfoComponent) => {
     return (
             <Box
                 p={1}
-                color={"info"}
                 sx={{
                     display: 'flex',
                     justifyContent: 'center',
-                    color: theme.palette.info.main,
-                    borderRadius: theme.shape.borderRadius,
-                    border: `2px solid ${theme.palette.info.light}`,
+                    color: theme.palette.grey.A700,
                 }}
             >
                 <Typography variant="h6">

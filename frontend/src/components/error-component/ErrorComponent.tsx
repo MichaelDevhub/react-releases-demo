@@ -1,6 +1,7 @@
 import React from 'react';
-import {Typography, Box, useTheme} from '@mui/material';
+import {Box, Typography, useTheme} from '@mui/material';
 import {CustomError} from "../../types/error.types";
+import {ErrorOutlineSharp} from "@mui/icons-material";
 
 export interface IErrorComponent {
     error: CustomError;
@@ -11,15 +12,17 @@ const ErrorComponent = ({error}: IErrorComponent) => {
     return (
             <Box
                 p={1}
-                color={'error'}
                 sx={{
                     display: 'flex',
                     justifyContent: 'center',
+                    alignItems: 'center',
                     color: theme.palette.error.main,
-                    borderRadius: theme.shape.borderRadius,
-                    border: `2px solid ${theme.palette.error.light}`,
+                    gap: theme.spacing(1),
                 }}
             >
+                <ErrorOutlineSharp sx={{
+                    color: theme.palette.error.main,
+                }}/>
                 <Typography variant="h6" color="error">
                     {error.message}
                 </Typography>

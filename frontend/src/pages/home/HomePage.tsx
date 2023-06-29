@@ -8,7 +8,6 @@ import ErrorComponent from "../../components/error-component/ErrorComponent";
 import ReleaseCardContainer from "../../components/release-card-container/ReleaseCardContainer";
 import LoadingContainer from "../../components/loading-contaienr/LoadingContainer";
 import {enqueueSnackbar} from "notistack";
-import {useTheme} from "@mui/material";
 
 interface IHeaderContentProps {
     state: IDataState;
@@ -27,7 +26,6 @@ const HomeContent = ({state}: IHeaderContentProps) => {
 }
 
 const HomePage = () => {
-    const theme = useTheme();
     const dispatch: AppDispatch = useAppDispatch();
     const dataState: IDataState = useAppSelector((state: RootState) => state.data);
 
@@ -40,29 +38,11 @@ const HomePage = () => {
 
     useEffect(() => {
         if (STATUS.FAILED === dataState.status) {
-            enqueueSnackbar({
-                message: dataState.error?.message,
-                style: {
-                    color: theme.palette.error.main,
-                    border: `2px solid ${theme.palette.error.main}}`
-                }
-            })
+            enqueueSnackbar(dataState.error?.message, {variant: 'error'});
         } else if (STATUS.SUCCESS === dataState.status && dataState.data.length > 0) {
-            enqueueSnackbar({
-                message: `${dataState.data.length} React Release found!`,
-                style: {
-                    color: theme.palette.success.main,
-                    border: `2px solid ${theme.palette.success.main}}`
-                }
-            })
+            enqueueSnackbar(`${dataState.data.length} React Release found!`, {variant: 'success'});
         } else if (STATUS.SUCCESS === dataState.status) {
-            enqueueSnackbar({
-                message: `0 React Release found!`,
-                style: {
-                    color: theme.palette.info.main,
-                    border: `2px solid ${theme.palette.info.main}}`
-                }
-            })
+            enqueueSnackbar(`0 React Release found!`, {variant: 'warning'});
         }
     }, [dataState.status])
 
