@@ -13,14 +13,6 @@ export const getTheme = (theme: ThemeMode) => {
             secondary: {
                 main: '#ececec',
             },
-            // error: {
-            //     light: '#FCF5F4',
-            //     main: '#BE2709',
-            // },
-            // info: {
-            //     light: '#EFF4F9',
-            //     main: '#00436B',
-            // }
         },
     });
 }

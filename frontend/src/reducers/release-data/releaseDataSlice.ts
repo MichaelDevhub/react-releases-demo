@@ -11,7 +11,6 @@ const initialState: IDataState = {
     data: [] as IReleaseData[],
 }
 
-// Slice with extra reducer
 const releaseDataSlice = createSlice({
     name: 'data',
     initialState,

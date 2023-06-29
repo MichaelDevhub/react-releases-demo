@@ -65,6 +65,7 @@ const Header = () => {
                                 color: theme.palette.primary.main,
                             }}/>
                         <InputBase
+                            data-testid="search-input"
                             placeholder="Search…"
                             sx={{
                                 flex: 1,

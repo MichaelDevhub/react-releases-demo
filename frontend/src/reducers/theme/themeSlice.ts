@@ -6,7 +6,6 @@ const initialState: IThemeState = {
     mode: 'light',
 }
 
-// Slice with extra reducer
 const themeSlice = createSlice({
     name: 'theme',
     initialState,

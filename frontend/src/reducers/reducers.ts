@@ -1,4 +1,3 @@
-// reducers.ts
 import dataReducer from './release-data/releaseDataSlice';
 import themeReducer from './theme/themeSlice';
 

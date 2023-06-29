@@ -9,7 +9,6 @@ const app = express();
 app.use(cors());
 admin.initializeApp();
 
-// Set up the Firestore emulator
 if (process.env.FIRESTORE_EMULATOR_HOST) {
     admin.firestore().settings({
         host: process.env.FIRESTORE_EMULATOR_HOST,

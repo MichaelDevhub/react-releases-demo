@@ -4,7 +4,7 @@ import {CustomError} from "../../types/error.types";
 import {isCustomError} from "../../utils/error-checks";
 import axios from "axios";
 
-axios.defaults.baseURL = 'http://localhost:5001'; // Replace with your Firebase Emulator host and port
+axios.defaults.baseURL = 'http://localhost:5001';
 axios.defaults.timeout = 5000;
 
 export const FETCH_RELEASE_DATA_URL = "/react-releases-demo/us-central1/getReactReleases/all";
