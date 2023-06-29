@@ -10,23 +10,29 @@ export interface IErrorComponentProps {
 const ErrorComponent = ({error}: IErrorComponentProps) => {
     const theme = useTheme();
     return (
-            <Box
-                p={1}
+        <Box
+            data-testid="error-message-container"
+            p={1}
+            sx={{
+                display: 'flex',
+                justifyContent: 'center',
+                alignItems: 'center',
+                color: theme.palette.error.main,
+                gap: theme.spacing(1),
+            }}
+        >
+            <ErrorOutlineSharp
+                data-testid="error-message-icon"
                 sx={{
-                    display: 'flex',
-                    justifyContent: 'center',
-                    alignItems: 'center',
-                    color: theme.palette.error.main,
-                    gap: theme.spacing(1),
-                }}
-            >
-                <ErrorOutlineSharp sx={{
                     color: theme.palette.error.main,
                 }}/>
-                <Typography variant="h6" color="error">
-                    {error.message}
-                </Typography>
-            </Box>
+            <Typography
+                data-testid="error-message-text"
+                variant="h6"
+                color="error">
+                {error.message}
+            </Typography>
+        </Box>
     );
 };
 
