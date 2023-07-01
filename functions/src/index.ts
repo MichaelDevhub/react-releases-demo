@@ -7,4 +7,4 @@
  * See a full list of supported triggers at https://firebase.google.com/docs/functions
  */
 
-export * from './getReactReleases';
+export * from "./getReactReleases";

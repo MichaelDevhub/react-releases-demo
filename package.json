@@ -3,8 +3,21 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "workspaces": [
+    "frontend",
+    "functions"
+  ],
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "install": "npm install --workspaces",
+    "install:frontend": "npm install --workspace=frontend",
+    "install:functions": "npm install --workspace=functions",
+    "build": "npm run build --workspaces",
+    "build:frontend": "npm run build --workspace=frontend",
+    "build:functions": "npm run build --workspace=functions",
+    "test": "npm run test --workspaces",
+    "test:frontend": "npm run test --workspace=frontend",
+    "test:functions": "npm run test --workspace=functions",
+    "deploy:hosting": "npm run build && firebase deploy --only hosting"
   },
   "repository": {
     "type": "git",
