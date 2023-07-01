@@ -1,5 +1,8 @@
 {
   "projects": {
-    "default": "react-releases-demo"
-  }
+    "default": "react-releases-demo",
+    "staging": "react-releases-demo"
+  },
+  "targets": {},
+  "etags": {}
 }
