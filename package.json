@@ -17,7 +17,8 @@
     "test": "npm run test --workspaces",
     "test:frontend": "npm run test --workspace=frontend",
     "test:functions": "npm run test --workspace=functions",
-    "deploy:hosting": "npm run build && firebase deploy --only hosting"
+    "start:dev": "npm run serve --workspace=functions & npm start --workspace=frontend",
+    "deploy:hosting": "npm run build &&  firebase deploy --only functions && firebase deploy --only hosting"
   },
   "repository": {
     "type": "git",
