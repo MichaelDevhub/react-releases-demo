@@ -6,32 +6,31 @@ import ReactionContainer from "../reaction-container/ReactionContainer";
 interface IReleaseCardProps {
     releaseData: IReleaseData;
 }
-const ReleaseCard = ({ releaseData }: IReleaseCardProps) => {
+
+const ReleaseCard = ({releaseData}: IReleaseCardProps) => {
     const {
         name,
         html_url,
         reactions,
     } = releaseData;
 
-    const handleClick = () => {
-        window.location.href = html_url;
-    };
-
     return (
-        <Card onClick={handleClick} sx={{
-            cursor: 'pointer',
-        }}>
-            <CardHeader title={name} />
-            <CardContent>
-                {reactions ? (
-                    <ReactionContainer reactions={reactions}/>
-                ) : (
-                    <Typography variant="body2" color="textSecondary">
-                        No reactions available.
-                    </Typography>
-                )}
-            </CardContent>
-        </Card>
+        <a href={html_url}>
+            <Card sx={{
+                cursor: 'pointer',
+            }}>
+                <CardHeader title={name}/>
+                <CardContent>
+                    {reactions ? (
+                        <ReactionContainer reactions={reactions}/>
+                    ) : (
+                        <Typography variant="body2" color="textSecondary">
+                            No reactions available.
+                        </Typography>
+                    )}
+                </CardContent>
+            </Card>
+        </a>
     );
 };
 

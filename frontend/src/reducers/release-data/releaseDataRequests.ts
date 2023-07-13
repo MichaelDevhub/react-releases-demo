@@ -4,7 +4,7 @@ import {CustomError} from "../../types/error.types";
 import {isCustomError} from "../../utils/error-checks";
 import axios from "axios";
 
-axios.defaults.baseURL = process.env.NODE_ENV === 'development' ? "http://localhost:5001" : "https://us-central1-react-releases-demo.cloudfunctions.net";
+axios.defaults.baseURL = process.env.NODE_ENV === 'development' ? "http://127.0.0.1:5001/react-releases-demo/us-central1" : "https://us-central1-react-releases-demo.cloudfunctions.net";
 axios.defaults.timeout = 5000;
 
 export const FETCH_RELEASE_DATA_URL = "/getReactReleases/all";
